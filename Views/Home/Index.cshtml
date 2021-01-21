@@ -1,0 +1,25 @@
+﻿@model IEnumerable<view_component.Models.Produto>
+@inject view_component.Models.ProdutoDestaque estatisticaProdutos
+
+<h1>Relação de Produtos</h1>
+<ul>
+    @foreach (var p in Model)
+    {
+        <li>@string.Format("{0} {1}", p.Nome, p.Tipo)</li>
+    }
+</ul>
+
+<hr />
+<h1>Estatísticas dos Produtos</h1>
+
+<div>
+    <p> Sucos: @await estatisticaProdutos.GetContaProdutoPorTipo("Suco") </p>
+
+    <p> Frutas: @await estatisticaProdutos.GetContaProdutoPorTipo("Fruta") </p>
+
+    <p> Condimentos: @await estatisticaProdutos.GetContaProdutoPorTipo("Condimento") </p>
+
+    <p> Total de Produtos: @await estatisticaProdutos.GetContaProduto() </p>
+</div>
+
+@await Component.InvokeAsync("ProdutoLista", "Suco")

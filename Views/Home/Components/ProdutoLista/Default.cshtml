@@ -1,0 +1,12 @@
+﻿@model IEnumerable<view_component.Models.Produto>
+
+<hr />
+<h1> Tipos de Produtos - Sucos </h1>
+<h2>View Component</h2>
+
+<ul>
+    @foreach (var produto in Model)
+    {
+        <li>@produto.Nome</li>
+    }
+</ul>
